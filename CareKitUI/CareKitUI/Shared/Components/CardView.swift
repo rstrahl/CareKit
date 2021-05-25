@@ -105,7 +105,7 @@ private struct CardEnabledEnvironmentKey: EnvironmentKey {
 }
 
 extension EnvironmentValues {
-    var isCardEnabled: Bool {
+    public var isCardEnabled: Bool {
         get { self[CardEnabledEnvironmentKey.self] }
         set { self[CardEnabledEnvironmentKey.self] = newValue }
     }
