@@ -43,7 +43,7 @@ open class OCKTaskController: ObservableObject {
     @Published public final var taskEvents = OCKTaskEvents()
 
     /// The error encountered by the controller.
-    @Published public internal(set) var error: Error?
+    @Published public var error: Error?
 
     /// The store manager against which the task will be synchronized.
     public let storeManager: OCKSynchronizedStoreManager
