@@ -31,7 +31,7 @@
 import UIKit
 
 extension Double {
-    var normalized: Double {
+    public var normalized: Double {
         return max(0, min(self, 1))
     }
 }
@@ -39,18 +39,18 @@ extension Double {
 extension CGFloat {
 
     /// Scaled value for the current size category.
-    func scaled() -> CGFloat {
+    public func scaled() -> CGFloat {
         UIFontMetrics.default.scaledValue(for: self)
     }
 
     /// The value between `self` and `end` with distance of `factor` between 0 and 1.
-    func interpolated(to end: CGFloat, factor: CGFloat) -> CGFloat {
+    public func interpolated(to end: CGFloat, factor: CGFloat) -> CGFloat {
         precondition(factor >= 0 && factor <= 1, "Factor should be in range [0, 1]")
         return (self + (factor * (end - self)))
             .clamped(to: (self...end))
     }
 
-    func clamped(to range: ClosedRange<CGFloat>) -> CGFloat {
+    public func clamped(to range: ClosedRange<CGFloat>) -> CGFloat {
         return Swift.max(Swift.min(self, range.upperBound), range.lowerBound)
     }
 }
