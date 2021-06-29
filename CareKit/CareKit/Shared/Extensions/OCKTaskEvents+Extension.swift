@@ -32,19 +32,19 @@ import Foundation
 
 extension OCKTaskEvents {
 
-    var firstEventTitle: String {
+    public var firstEventTitle: String {
         first?.first?.task.title ?? ""
     }
 
-    var firstTaskInstructions: String? {
+    public var firstTaskInstructions: String? {
         first?.first?.task.instructions
     }
 
-    var firstEventDetail: String? {
+    public var firstEventDetail: String? {
         OCKScheduleUtility.scheduleLabel(for: first?.first)
     }
 
-    var isFirstEventComplete: Bool {
+    public var isFirstEventComplete: Bool {
         first?.first?.outcome != nil
     }
 }
