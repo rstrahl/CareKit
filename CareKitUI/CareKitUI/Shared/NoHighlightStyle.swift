@@ -32,6 +32,9 @@ import SwiftUI
 
 /// Turns off the highlighted (AKA pressed) state.
 public struct NoHighlightStyle: ButtonStyle {
+    
+    public init() { }
+
     public func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label.contentShape(Rectangle())
     }
