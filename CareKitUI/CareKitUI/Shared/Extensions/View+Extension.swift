@@ -34,14 +34,14 @@ import SwiftUI
 extension View {
 
     /// Conditionally apply modifiers to a view.
-    func `if`<TrueContent: View>(_ condition: Bool, trueContent: (Self) -> TrueContent) -> some View {
+    public func `if`<TrueContent: View>(_ condition: Bool, trueContent: (Self) -> TrueContent) -> some View {
         condition ?
             ViewBuilder.buildEither(first: trueContent(self)) :
             ViewBuilder.buildEither(second: self)
     }
 
     /// Opposite effect of applying a `mask`. This will use the alpha channel of the mask to cut a shape out of the view.
-    func inverseMask<Mask: View>(_ mask: Mask) -> some View {
+    public func inverseMask<Mask: View>(_ mask: Mask) -> some View {
         self.mask(mask
             .foregroundColor(.black)
             .background(Color.white)
