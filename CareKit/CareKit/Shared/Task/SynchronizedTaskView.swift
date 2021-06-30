@@ -33,7 +33,7 @@ import Foundation
 import SwiftUI
 
 @available(iOS 14.0, watchOS 7.0, *)
-struct SynchronizedTaskView<Controller: OCKTaskController, Content: View>: View {
+public struct SynchronizedTaskView<Controller: OCKTaskController, Content: View>: View {
 
     @StateObject private var controller: Controller
 
@@ -41,7 +41,7 @@ struct SynchronizedTaskView<Controller: OCKTaskController, Content: View>: View 
     private let content: (_ controller: Controller) -> Content
     private let query: OCKSynchronizedTaskQuery?
 
-    var body: some View {
+    public var body: some View {
         content(controller)
             .onAppear {
                 self.query?.perform(using: self.controller)
@@ -51,7 +51,7 @@ struct SynchronizedTaskView<Controller: OCKTaskController, Content: View>: View 
             }
     }
 
-    init(controller: Controller, query: OCKSynchronizedTaskQuery? = nil, errorHandler: ((Error) -> Void)? = nil,
+    public init(controller: Controller, query: OCKSynchronizedTaskQuery? = nil, errorHandler: ((Error) -> Void)? = nil,
          content: @escaping (_ viewModel: Controller) -> Content) {
         self.query = query
         self._controller = .init(wrappedValue: controller)
@@ -59,7 +59,7 @@ struct SynchronizedTaskView<Controller: OCKTaskController, Content: View>: View 
         self.content = content
     }
 
-    init(copying copy: Self, settingErrorHandler errorHandler: @escaping (Error) -> Void) {
+    public init(copying copy: Self, settingErrorHandler errorHandler: @escaping (Error) -> Void) {
         self.query = copy.query
         self._controller = .init(wrappedValue: copy.controller)
         self.content = copy.content

@@ -31,17 +31,17 @@
 import CareKitStore
 import Foundation
 
-enum OCKSynchronizedTaskQuery {
+public enum OCKSynchronizedTaskQuery {
 
     case taskQuery(_ taskQuery: OCKTaskQuery, _ eventQuery: OCKEventQuery)
     case taskIDs(_ taskIDs: [String], _ eventQuery: OCKEventQuery)
 
-    static func tasks(_ tasks: [OCKAnyTask], _ eventQuery: OCKEventQuery) -> Self {
+    public static func tasks(_ tasks: [OCKAnyTask], _ eventQuery: OCKEventQuery) -> Self {
         let taskIDs = Array(Set(tasks.map { $0.id }))
         return .taskIDs(taskIDs, eventQuery)
     }
 
-    func perform(using controller: OCKTaskController) {
+    public func perform(using controller: OCKTaskController) {
         switch self {
         case let .taskQuery(taskQuery, eventQuery):
             controller.fetchAndObserveEvents(forTaskQuery: taskQuery, eventQuery: eventQuery)
